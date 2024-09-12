@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -10,14 +11,19 @@ class ProductController extends Controller
         return view("cadastro_produto");
     }
     public function criarProduto(Request $request){
-        $produto = new Produto;
-        $produto->id_produto = $request->id_produto;
-        $produto->name = $request->name;
-        $produto->descricao = $request->descricao;
-        $produto->preco = $request->preco;
+        $produtos = new Produto;
+        $produtos->name = $request->name;
+        $produtos->descricao = $request->descricao;
+        $produtos->preco = $request->preco;
 
-        $produto-> save();
+        $produtos-> save();
+        return redirect('/listar_produto');
         
-    //
-}
+    }
+
+    public function listarProduto() {
+        $produtos = produto::all();
+
+        return view("produtos", ["produtos"=>$produtos]);
+    }
 }

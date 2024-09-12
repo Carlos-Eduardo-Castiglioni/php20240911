@@ -6,7 +6,8 @@
     <title>Cadastrar Produto</title>
 </head>
 <body>
-    <form action="/criar_produto">
+    <form action="/criar_produto" method= "post">
+    @csrf
         <label for="name">Nome</label>
         <input type="text" name="name">
 
@@ -16,7 +17,7 @@
         <label for="preco">Preço</label>
         <input type="number" name="preco">
 
-        <input type="subimit" value="Salvar">
+        <input type="submit" value="Salvar">
 
     </form>
     
